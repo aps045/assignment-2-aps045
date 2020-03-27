@@ -35,13 +35,7 @@ public class MyMain {
                     scanner.nextLine();
                     System.out.print("Name : ");
                     String name = scanner.nextLine();
-                    System.out.print("Course : ");
-                    String course = scanner.nextLine();
-                    System.out.print("Branch : ");
-                    String branch = scanner.nextLine();
-                    System.out.print("Year : ");
-                    int year = scanner.nextInt();
-                    Student student = new Student(roll, name, course, branch, year);
+                    Student student = new Student(roll, name);
                     obj.insertData(student);
                     System.out.println("\nData is Inserted !!!\n");
                     break;

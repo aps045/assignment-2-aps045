@@ -9,24 +9,19 @@ package problem5.student;
 public class Student {
     private int roll;
     private String name;
-    private String course;
-    private String branch;
-    private int year;
+    private int backlogCount;
+    private int appearingCount;
 
-    public Student() {
-        roll = 0;
-        name = "";
-        course = "";
-        branch = "";
-        year = 0;
-    }
-
-    public Student(int roll, String name, String course, String branch, int year) {
+    public Student(int roll, String name) {
         this.roll = roll;
         this.name = name;
-        this.course = course;
-        this.branch = branch;
-        this.year = year;
+    }
+
+    public Student(int roll, String name, int backlogCount, int appearingCount) {
+        this.roll = roll;
+        this.name = name;
+        this.backlogCount = backlogCount;
+        this.appearingCount = appearingCount;
     }
 
     public int getRoll() {
@@ -45,27 +40,25 @@ public class Student {
         this.name = name;
     }
 
-    public String getCourse() {
-        return course;
+    public int getBacklogCount() {
+        return backlogCount;
     }
 
-    public void setCourse(String course) {
-        this.course = course;
+    public void setBacklogCount(int backlogCount) {
+        this.backlogCount = backlogCount;
     }
 
-    public String getBranch() {
-        return branch;
+    public int getAppearingCount() {
+        return appearingCount;
     }
 
-    public void setBranch(String branch) {
-        this.branch = branch;
+    public void setAppearingCount(int appearingCount) {
+        this.appearingCount = appearingCount;
     }
 
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
+    @Override
+    public String toString() {
+        return "\n\tRoll No. : " + getRoll()
+                + "\n\tName : " + getName();
     }
 }

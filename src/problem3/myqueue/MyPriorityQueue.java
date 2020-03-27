@@ -50,11 +50,7 @@ public class MyPriorityQueue {
                 System.out.println("\nData Entry Queue is Empty\n");
             } else {
                 System.out.println("Data of Student that will be Deleting ----\n"
-                        + "Roll No. : " + front.getData().getRoll()
-                        + "\nName : " + front.getData().getName()
-                        + "\nCourse : " + front.getData().getCourse()
-                        + "\nBranch : " + front.getData().getBranch()
-                        + "\nYear : " + front.getData().getYear() + "\n");
+                        + front.getData().toString() + "\n");
                 if (front.getNext() == null) {
                     front = null;
                 } else {
@@ -86,11 +82,7 @@ public class MyPriorityQueue {
                 System.out.println("\nStudent with Roll No " + roll + " is not found !!!\n");
             } else {
                 System.out.println("Details of Student are ------"
-                        + "\nRoll No. : " + temp.getData().getRoll()
-                        + "\nName : " + temp.getData().getName()
-                        + "\nCourse : " + temp.getData().getCourse()
-                        + "\nBranch : " + temp.getData().getBranch()
-                        + "\nYear : " + temp.getData().getYear() +"\n");
+                        + front.getData().toString() + "\n");
             }
         }
     }
@@ -106,11 +98,7 @@ public class MyPriorityQueue {
             System.out.println();
             while (temp != null) {
                 System.out.println("Details of Student " + i + " are ------"
-                        + "\nRoll No. : " + temp.getData().getRoll()
-                        + "\nName : " + temp.getData().getName()
-                        + "\nCourse : " + temp.getData().getCourse()
-                        + "\nBranch : " + temp.getData().getBranch()
-                        + "\nYear : " + temp.getData().getYear() +"\n");
+                        + front.getData().toString() + "\n");
                 temp = temp.getNext();
                 i++;
             }
