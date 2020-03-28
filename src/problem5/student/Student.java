@@ -61,4 +61,11 @@ public class Student {
         return "\n\tRoll No. : " + getRoll()
                 + "\n\tName : " + getName();
     }
+
+    public String toStrings() {
+        return "\n\tRoll No. : " + getRoll()
+                + "\n\tName : " + getName()
+                + "\n\tNo. of Backlogs : " + getBacklogCount()
+                + "\n\tAppearing Count : " + getAppearingCount();
+    }
 }
