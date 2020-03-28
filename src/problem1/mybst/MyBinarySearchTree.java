@@ -8,10 +8,11 @@ package problem1.mybst;
 
 import problem1.node.TreeNode;
 
+import java.util.ArrayList;
+
 // to implement BinarySearchTree
 public class MyBinarySearchTree {
 
-    int count;
     TreeNode root;
 
     TreeNode newnode = new TreeNode();
@@ -24,18 +25,7 @@ public class MyBinarySearchTree {
         return root;
     }
 
-    public void setRoot(TreeNode root) {
-        this.root = root;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
+    //  Method to insert data in BST
     public void insert(int value) {
         TreeNode ele = new TreeNode(value);
         /*
@@ -70,37 +60,35 @@ public class MyBinarySearchTree {
         }                                   //  End of else
     }
 
+    int leftNodeCount = 0;
+    int noLeftNodeCount = 0;
 
-//    public void traverse() {
-//        newnode.setCurrent(root);
-//        newnode.setParent(root);
-//        this.count = 0;
-//        while (newnode.getCurrent() != null) {
-//            newNode.setParent(newNode.getCurrent());
-//            if (newNode.getCurrent().getLeft() == null) {
-//                count++;
-//            }
-//            if (newNode.getParent().getData() == newNode.getCurrent().getData()){
-//
-//            }
-//            if (newNode.getParent().getData() < newNode.getCurrent().getData()) {
-//                System.out.println(newNode.getCurrent().getData());
-//                newNode.setCurrent(newNode.getCurrent().getLeft());
-//            }
-//            if (newNode.getParent().getData() > newNode.getCurrent().getData()) {
-//                newNode.setCurrent(newNode.getCurrent().getRight());
-//            }
-//            if (newnode.getCurrent().getLeft() == null) {
-//                count++;
-//                newnode.setCurrent(newnode.getParent().getRight());
-//            } else {
-//                newnode.setCurrent(newnode.getCurrent().getLeft());
-//                if (newnode.getParent().getRight().getRight() != null) {
-//                    newnode.setParent(newnode.getCurrent());
-//                }
-//                System.out.println(newnode.getCurrent().getData());
-//
-//            }
-//        }
-//    }
+    ArrayList<Integer> leftNode = new ArrayList<>();
+
+    //  Method for traversing in BST for req result
+    public void inOrderTraversal(TreeNode node) {
+        if (node == null) {
+            return;
+        } else {
+            inOrderTraversal(node.getLeft());
+            if (node.getLeft() != null) {
+                leftNodeCount++;
+                leftNode.add(node.getLeft().getData());
+            } else if (node.getLeft() == null || node.getRight() != null) {
+                noLeftNodeCount++;
+            }
+            System.out.print(node.getData() + " ");
+            inOrderTraversal(node.getRight());
+        }
+    }
+
+    //  Method to print all the results obtained
+    public void printNode() {
+        System.out.println();
+        for (Integer integer : leftNode) {
+            System.out.print(integer + " ");
+        }
+        System.out.println();
+        System.out.println("Nodes who are not having Left child :" + noLeftNodeCount);
+    }
 }
