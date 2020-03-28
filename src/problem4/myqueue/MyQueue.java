@@ -15,25 +15,82 @@ import java.util.Queue;
 
 public class MyQueue {
     Queue<String> queue = new LinkedList<>();
-    ArrayList<Integer> linkedList = new ArrayList<>();
+    ArrayList<Integer> preOrderLinkedList = new ArrayList<>();
+    ArrayList<Integer> postOrderLinkedList = new ArrayList<>();
 
-    public void preorder(TreeNode x) {
+    //  Method to traverse tree through pre order traversing
+    public void preOrder(TreeNode x) {
         if (x == null) {
             return;
         } else {
-            linkedList.add(x.getData());
-            preorder(x.getLeft());
-            preorder(x.getRight());
+            preOrderLinkedList.add(x.getData());
+            preOrder(x.getLeft());
+            preOrder(x.getRight());
         }
     }
 
+    //  Method to traverse tree through post order traversing
+    public void postOrder(TreeNode x) {
+        if (x == null) {
+            return;
+        } else {
+            postOrder(x.getLeft());
+            postOrder(x.getRight());
+            postOrderLinkedList.add(x.getData());
+        }
+    }
+
+    //  Method to print pre - order successor of all the nodes of given binary search tree stored in a queue
     public void printSuccessor() {
-        for (int i = 0; i < linkedList.size() - 1; i++) {
-            queue.add(linkedList.get(i) + " successor is-------> " + linkedList.get(i + 1));
+        for (int i = 0; i < preOrderLinkedList.size() - 1; i++) {
+            queue.add(preOrderLinkedList.get(i) + " successor is-------> " + preOrderLinkedList.get(i + 1));
         }
-        queue.add(linkedList.get(linkedList.size() - 1) + " successor is-------> " + "null");
+        queue.add(preOrderLinkedList.get(preOrderLinkedList.size() - 1) + " successor is-------> " + "null");
     }
 
+    //  Method to print the tree through pre order approach
+    public void printPreOrder() {
+        System.out.println("--------------------PREORDER---------------------");
+        for (int i = 0; i < preOrderLinkedList.size(); i++) {
+            System.out.print(preOrderLinkedList.get(i) + " ");
+        }
+        System.out.println();
+    }
+
+    //  Method to print the tree through post order approach
+    public void printPostOrder() {
+        System.out.println("--------------------POSTORDER---------------------");
+        for (int i = 0; i < postOrderLinkedList.size(); i++) {
+            System.out.print(postOrderLinkedList.get(i) + " ");
+        }
+        System.out.println();
+    }
+
+    /*
+    * Method to check where the root element is present
+    * in both pre order and post order at extreme end
+     */
+    public void checkOpposites() {
+        if (preOrderLinkedList.get(0) == postOrderLinkedList.get(postOrderLinkedList.size() - 1)) {
+            System.out.println("STATEMENT 1 PROVED CORRECT");
+        } else {
+            System.out.println("SORRY!!! STATEMENT 1 PROVED WRONG");
+        }
+    }
+
+    /*
+    * Method to check whether mid element in case
+    * of both approach for a tree is same or not
+     */
+    public void checkMiddles(int mid) {
+        if (postOrderLinkedList.get(mid) == preOrderLinkedList.get(mid)) {
+            System.out.println("STATEMENT 2 PROVED CORRECT");
+        } else {
+            System.out.println("SORRY!!! STATEMENT 2 PROVED WRONG");
+        }
+    }
+
+    //  Method to display pre - successor of each node of given BST
     public void display() {
         for (String i : queue) {
             System.out.println(i);

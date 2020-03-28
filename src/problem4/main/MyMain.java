@@ -25,7 +25,7 @@ public class MyMain {
             int value = scanner.nextInt();
             obj.insert(value);
         }
-        myQueue.preorder(obj.getRoot());
+        myQueue.preOrder(obj.getRoot());
         myQueue.printSuccessor();
         myQueue.display();
     }
